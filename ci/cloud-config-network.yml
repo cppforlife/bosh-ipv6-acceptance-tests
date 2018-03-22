@@ -1,0 +1,10 @@
+networks:
+- name: ((network_name))
+  type: manual
+  subnets:
+  - azs: [z1, z2, z3]
+    range: ((internal_cidr))
+    dns: ((internal_dns))
+    gateway: ((internal_gw))
+    cloud_properties:
+      name: ((docker_network_name))

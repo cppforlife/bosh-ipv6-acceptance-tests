@@ -1,0 +1,7 @@
+# Currently we have to force zookeeper to run without PDs
+# because Director does not sync_dns after PD is attached
+# (with Docker CPI, PD attachment causes recreation of "VM"
+# which means that VM local DNS data is cleared.)
+# See cloudfoundry/bosh#wip_dk_rerender branch for test fix.
+- type: remove
+  path: /instance_groups/name=zookeeper/persistent_disk

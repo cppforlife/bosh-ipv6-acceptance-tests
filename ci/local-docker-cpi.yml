@@ -1,0 +1,7 @@
+# todo publish new cpi
+- type: replace
+  path: /releases/name=bosh-docker-cpi
+  value:
+    name: bosh-docker-cpi
+    url: https://s3.amazonaws.com/dk-shared-assets/docker-cpi-ipv6-apr4
+    sha1: c95db133cd7cadb94aff775527c5c4710cb5c6f8

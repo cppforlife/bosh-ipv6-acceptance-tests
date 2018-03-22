@@ -1,0 +1,45 @@
+---
+groups:
+- name: all
+  jobs:
+  - test-hybrid
+  - test-pure
+
+jobs:
+- name: test-hybrid
+  plan:
+  - do:
+    - aggregate:
+      - get: bosh-ipv6-acceptance-tests
+      - get: bosh-deployment
+    - task: test
+      file: bosh-ipv6-acceptance-tests/ci/run.yml
+      privileged: true
+      params:
+        HYBRID: true
+- name: test-pure
+  plan:
+  - do:
+    - aggregate:
+      - get: bosh-ipv6-acceptance-tests
+      - get: bosh-deployment
+    - task: test
+      file: bosh-ipv6-acceptance-tests/ci/run.yml
+      privileged: true
+
+resources:
+- name: bosh-dns-release
+  type: bosh-io-release
+  source:
+    repository: cloudfoundry/bosh-dns-release
+
+- name: bosh-deployment
+  type: git
+  source:
+    uri: https://github.com/cloudfoundry/bosh-deployment
+    branch: master
+
+- name: stemcell
+  type: bosh-io-stemcell
+  source:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
