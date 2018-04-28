@@ -1,6 +1,7 @@
+# Useful for when Director VM cannot access internet 
+# to download release (since it's on IPv6)
 - type: replace
   path: /releases/name=bosh-dns/url?
   value: git+https://github.com/cloudfoundry/bosh-dns-release
-
 - type: remove
   path: /releases/name=bosh-dns/sha1?

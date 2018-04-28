@@ -1,3 +1,4 @@
+# todo remove once Director PR is accepted
 - type: replace
   path: /releases/name=bosh/url
   value: https://s3.amazonaws.com/bosh-alpha-compiled-release-tarballs/bosh-263.4.0%2Bdev.1-ubuntu-trusty-3468.15-20180210-035711-477736142-20180210035715.tgz?versionId=ByWtmA.hFdwe6vgzaZn4tA6f5F6VKh6M

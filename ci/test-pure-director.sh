@@ -47,7 +47,6 @@ bosh create-env bosh-deployment/bosh.yml \
   --var-file docker_tls.certificate=${docker_certs_dir}/cert.pem \
   --var-file docker_tls.private_key=${docker_certs_dir}/key.pem \
   -o bosh-ipv6-acceptance-tests/ci/local-bosh-release.yml \
-  -o bosh-ipv6-acceptance-tests/ci/local-docker-cpi.yml \
   -v network=ipv6-only
 
 export BOSH_ENVIRONMENT="https://[fd8d:a46c:6ec2:6709:0000:0000:0000:0006]:25555"
@@ -75,7 +74,8 @@ bosh -n upload-stemcell stemcell.tgz --sha1 44138ff5e30cc1d7724d88eaa70fab955b80
 echo "-----> `date`: Deploy"
 bosh -n -d zookeeper deploy <(wget -O- https://raw.githubusercontent.com/cppforlife/zookeeper-release/master/manifests/zookeeper.yml) \
 	-o bosh-ipv6-acceptance-tests/ci/zookeeper-enable-dns.yml \
-  -o bosh-ipv6-acceptance-tests/ci/zookeeper-docker-cpi-disks.yml
+  -o bosh-ipv6-acceptance-tests/ci/zookeeper-docker-cpi-disks.yml \
+  -o bosh-ipv6-acceptance-tests/ci/zookeeper-variable-test.yml
 
 echo "-----> `date`: Exercise deployment"
 bosh -n -d zookeeper run-errand status
@@ -110,5 +110,4 @@ bosh delete-env bosh-deployment/bosh.yml \
   --var-file docker_tls.certificate=${docker_certs_dir}/cert.pem \
   --var-file docker_tls.private_key=${docker_certs_dir}/key.pem \
   -o bosh-ipv6-acceptance-tests/ci/local-bosh-release.yml \
-  -o bosh-ipv6-acceptance-tests/ci/local-docker-cpi.yml \
   -v network=ipv6-only

@@ -10,5 +10,8 @@ inputs:
 - name: bosh-ipv6-acceptance-tests
 - name: bosh-deployment
 
+params:
+  HYBRID: ""
+
 run:
   path: bosh-ipv6-acceptance-tests/ci/run.sh

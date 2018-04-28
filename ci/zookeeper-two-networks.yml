@@ -1,17 +1,11 @@
 - type: replace
-  path: /instance_groups/name=zookeeper/networks/0/default?
-  value: [dns, gateway]
-
-- type: replace
   path: /instance_groups/name=zookeeper/networks/-
   value:
-    name: ipv4-only
-
-- type: replace
-  path: /instance_groups/name=smoke-tests/networks/0/default?
-  value: [dns, gateway]
+    name: ipv6-only
+    default: [dns, gateway]
 
 - type: replace
   path: /instance_groups/name=smoke-tests/networks/-
   value:
-    name: ipv4-only
+    name: ipv6-only
+    default: [dns, gateway]

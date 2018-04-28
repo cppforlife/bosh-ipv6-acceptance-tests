@@ -1,0 +1,6 @@
+# Useful for forcing credhub to generate a password
+- type: replace
+  path: /variables?/-
+  value:
+    name: test-password
+    type: password
